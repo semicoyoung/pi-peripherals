@@ -4,18 +4,11 @@ POC for POS peripheral integration using nodejs
 ## Instructions
 * Install nodejs
 * Clone this repository
-* Run ``` $ npm install ```
+* Run ``` $ npm install ``` from root directory
 
-## Running on Windows
+## Run the app
 From the root directory, run
 
 ```
 node ./bin/www
-```
-
-## Running on Linux
-From the root directory, run
-
-```
-$ DEBUG=title ./bin/www
 ```
