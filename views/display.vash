@@ -2,53 +2,34 @@
     model.title = 'Customer Display';
 }
 
-@html.extend('layout', function(model) {
-    @html.block('body', function(model) {
-        <h2 class="text-center">@model.title</h2>
-        <div class="row">
-            <div class="col-md-9">
-            </div>
-            <div class="col-md-3 col-md-offset-9">
-                <table class="table table-hover">
-                    <tbody>
-                        @model.check.items.forEach(function(item) {
-                            <tr>
-                                <td>@item.name</td>
-                                <td class="text-right">@item.value</td>
-                            </tr>
-                        })
-                        <tr>
-                            <td>Subtotal</td>
-                            <td class="text-right">@model.check.subtotal</td>
-                        </tr>
-                        @model.check.taxes.forEach(function(t) {
-                            <tr>
-                                <td>@t.name</td>
-                                <td class="text-right">@t.value</td>
-                            </tr>
-                        })
-                        <tr>
-                            <td>Total</td>
-                            <td class="text-right">@model.check.total</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    })
+<html>
+<head>
+        <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+</head>
+<body>
 
-    @html.block('scripts', function(model) {
-        <script>
-            $(document).ready(function(){
-                var conn = new WebSocket('ws://localhost:3001');
-                conn.onopen = function() {
-                    console.log('connection open');
-                }
-                conn.onmessage = function(e) {
-                    console.log(e.data);
-                    location.reload();
-                }
-            });
-        </script>
-    }) 
-})
+@html.raw(model.html)
+
+<script type="text/javascript" src="//code.jquery.com/jquery-2.1.3.min.js"></script>
+<script>
+    $(document).ready(function(){
+        var conn = new WebSocket('ws://localhost:3001');
+        conn.onopen = function() {
+            console.log('connection open');
+        }
+        conn.onmessage = function(e) {
+            location.reload();
+        }
+    });
+</script>
+
+@if (@model.jqueryui) {
+    <script type="text/javascript" src="//code.jquery.com/jquery-2.1.3.min.js"></script>
+}
+
+@if (@model.bootstrapScript) {
+    <script type="text/javascript" src="//code.jquery.com/jquery-2.1.3.min.js"></script>
+}
+
+</body>
+</html>
