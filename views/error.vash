@@ -1,0 +1,10 @@
+@{
+    model.title = 'Error';
+}
+
+@html.extend('layout', function(model) {
+    @html.block('body', function(model) {
+        <h2>@model.title</h2>
+        <p>We've encountered an error!</p>
+    })
+})
