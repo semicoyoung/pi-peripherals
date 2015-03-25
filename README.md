@@ -1,4 +1,4 @@
-# pi-peripherals
+# pi-peripherals [![Build Status](https://travis-ci.org/kkaung/pi-peripherals.svg?branch=master)](https://travis-ci.org/kkaung/pi-peripherals)
 POC for POS peripheral integration using nodejs
 
 ## Instructions
